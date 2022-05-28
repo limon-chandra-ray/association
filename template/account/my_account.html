@@ -1,0 +1,77 @@
+{% extends 'account/user_profile.html' %}
+{% load static %}
+{% block account %}
+<div class="container">
+      <div style="position: relative;">
+            {% if background_image %}
+                  {% for image in background_image %}
+                  <img src="{{image.image.url}}"   style="width:100%;height:200px" alt=""/>
+                  {% endfor %}
+            {% else %}
+                  <img src="{% static 'images/water-dropsjpg.jpg' %}"   style="width:100%;height:200px" alt=""/>
+            {% endif %}
+            <div style="width: 150px;
+            height: 150px;
+            overflow: hidden;
+            position: absolute;
+            left: 45%;
+
+            bottom: -59px;
+            border-radius: 99px;
+            border: 2px solid;
+            border-color: white;">
+                  <img style="width: 150px;height:150px" {% if profile_image %} {% for image in profile_image %} src="{{image.image.url}}"{% endfor %}{% else %} src="{% static 'images/deafult_user.png' %}"{% endif %}  alt="">
+            </div>
+      </div>
+      <div class="row justify-content-center mb-3" style="    margin-top: 81px;">
+            <div class="col-md-9">
+                  <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                              <div>
+                                    <span>User Name  </span>
+                              </div>
+                              <div>
+                                    <span>Student Id  </span>
+                              </div>
+                              <div>
+                                    <span>Full Name  </span>
+                              </div>
+                              <div>
+                                    <span>Email Address  </span>
+                              </div>
+                              <div>
+                                    <span>Batch No  </span>
+                              </div>
+                              <div>
+                                    <span>Join In  </span>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
+                              <div>
+                                    <span>{{user.user_name}}</span>
+                              </div>
+                              <div>
+                                    <span>{{user.student_id}}  </span>
+                              </div>
+                              <div>
+                                    <span>{{user.full_name}} </span>
+                              </div>
+                              <div>
+                                    <span>{{user.email}} </span>
+                              </div>
+                              <div>
+                                    <span>{{user.batch_no}} </span>
+                              </div>
+                              <div>
+                                    <span>{{user.join_date|date:'d-m-Y'}}  </span>
+                              </div>
+                        </div>
+                  </div>
+
+                  
+            </div>
+            
+      </div>
+</div>
+{% endblock account %}

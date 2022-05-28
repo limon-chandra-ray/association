@@ -1,0 +1,41 @@
+{% extends 'account/user_profile.html' %}
+{% load static %}
+{% block account %}
+<div class="container">
+      <div>
+            <h1>Account Settings</h1>
+
+      </div>
+      <div class="container">
+            <form action="{% url 'addprofileImage' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="row justify-content-center">
+                        <div class="col-md-7">
+                              <label for="profileImage" class="form-label">Profile Image</label>
+                              <input type="file" class="form-control" name="profile_image" placeholder="profile image " id="">
+                        </div>
+                        <div class="col-md-7 my-2">
+                              <button type="submit" class="form-control">Add image</button>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="container">
+            <form action="{% url 'addprofileBackgroundImage' %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="row justify-content-center">
+                        <div class="col-md-7">
+                              <label for="profileImage" class="form-label">Profile Background Image</label>
+                              <input type="file" class="form-control" name="profile_background_image" placeholder="profile background image " id="">
+                        </div>
+                        <div class="col-md-7 my-2">
+                              <button type="submit" class="form-control">Add background image</button>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      
+</div>
+
+
+{% endblock account %}

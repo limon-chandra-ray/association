@@ -1,0 +1,122 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block main %}
+    
+    <H1 class="text-center p-5"
+        style="background-image: url(../../../static/images/water-dropsjpg.jpg); background-repeat: no-repeat; background-size: cover; margin-top: 2px; color: #0d00f5; font-size: 60px; margin-bottom: 2px;">
+        Mathematical Club
+    </H1>
+    <!---Members-->
+<div class="container-fluid" style="background-color:rgb(58, 58, 58);">
+    <div class="row text-center">
+        <h1 class="mx-auto py-2 my-2" style="font-size:50px;color: white">MEMBERS</h1>
+    </div>
+    <div class="container row justify-content-center ">
+        {% if club_member %}
+            {% for aclub in club_member %}
+                <div class="col-md-4 col-lg-4 small-d" style="text-align: -webkit-center;">
+                        <a href="{% url 'memberDetails' aclub.member.id aclub.club.club_name aclub.member.student_id%}" class="card_hover">
+                            <div class="card" style="width: 20rem;overflow:hidden;align-items: center;">
+                                    <div style="overflow:hidden;">
+                                            {% if background_image %}
+                                                {% for image in background_image %}
+                                                    {% if image.member.id == aclub.member.id%}
+                                                        <img style="height:200px" src="{{image.image.url}}"/>
+                                                    
+                                                    {% endif %}
+                                                {% endfor %}  
+                                            {% else %}
+                                                <img style="height:200px" src="{% static 'images/programming-club-banner.jpg' %}"/>
+                                            {% endif %}
+                                
+                                        <div style="    width: 110px;
+                                            height: 110px;
+                                            top: 16%;
+                                            overflow: hidden;
+                                            position: absolute;
+                                            left: 33%;
+                                            border-radius: 66px;">
+                                            {% for image in profile_image %}
+                                                {% if image.member.id == aclub.member.id %}
+                                                    <img class="profile_image" src="{{image.image.url}}" style="object-fit: cover;width: 100%;height:100%" alt="">
+                                                
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">{{aclub.member.user_name}}</h5>
+                                        <p style="margin-bottom: 5px">Student ID:  {{aclub.member.student_id}}</p>
+                                        <p style="margin-bottom: 0px">Batch : {{aclub.member.batch_no}}</p>
+                                    </div>
+                            </div>
+                        </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1 style="text-align:center;color:white">No MEMBERS</h1>
+        {% endif %}
+    </div>
+</div>
+<!---Members End-->
+    <!-- ===========Members============== -->
+    <!-- <div class="member">
+        <h3 class="text-center" style="color: rgb(249, 255, 202);">Committee</h3>
+        <div class="container container1 d-block mt-5 text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card0 card-member">
+                        <h3 class="Text-center">Vice President</h3>
+                        <div class="border">
+                            <h2>Md Azharul Islam</h2>
+                            <div class="icons">
+                                <a href="#"><i class="fa fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-youtube"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card1 card-member">
+                        <h3 class="Text-center">President</h3>
+                        <div class="border">
+                            <h2>Dr. Saleh Ahmed</h2>
+                            <div class="icons">
+                                <a href="#"><i class="fa fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-youtube"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card2 card-member">
+                        <h3 class="Text-center">Vice President</h3>
+                        <div class="border">
+                            <h2>Abdul Muhaimin Adip</h2>
+                            <div class="icons">
+                                <a href="#"><i class="fa fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-youtube"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- ===========Members End============== -->
+{% endblock main %}
+{% block title %}
+Mathematical
+{% endblock title %}
+
+
+
+

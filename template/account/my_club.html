@@ -1,0 +1,32 @@
+{% extends 'account/user_profile.html' %}
+{% load static %}
+{% block account %}
+<style>
+      .card_club{
+            background: rgb(151, 173, 175);
+      }
+</style>
+<div class="container">
+      <div class="py-5" style="width:100%;">
+            <h1 class="text-center">My Active Club</h1>
+      </div>
+      <div class="row justify-content-center">
+            {% for club in myclub %}
+            <div class="col-md-4 col-lg-4 small-d">
+                  <div class="card card_club">
+                          
+                        <img style="height: 100px; width:100px" src="{{club.club.club_image.url}}"
+                                  class="card-img-top rounded-circle mx-auto d-block mt-2" alt="...">
+                          
+                        <div class="card-body">
+                        <h5 class="card-title text-center">{{club.club.club_name}}</h5>
+                        </div>
+                  </div>
+            </div>
+            {% endfor %}
+            
+      </div>
+</div>
+
+
+{% endblock account %}

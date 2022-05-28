@@ -1,0 +1,251 @@
+{% extends 'main.html' %}
+{% block main %}
+    <style type="text/css">
+        /* ============ only desktop view ============ */
+        @media all and (min-width: 992px) {
+            .menubar1 .dropdown-menu-end {
+                right: 0;
+                left: auto;
+            }
+
+            .menubar1 .nav-item1 .dropdown-menu1 {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+                margin-top: 0;
+            }
+
+            .menubar1 .nav-item1:hover .nav-link {
+                color: #fff;
+            }
+
+            .menubar1 .dropdown-menu1.fade-down {
+                top: 80%;
+                transform: rotateX(-75deg);
+                transform-origin: 0% 0%;
+            }
+
+            .menubar1 .dropdown-menu1.fade-up {
+                top: 180%;
+            }
+
+            .menubar1 .nav-item1:hover .dropdown-menu1 {
+                transition: .3s;
+                opacity: 1;
+                visibility: visible;
+                top: 100%;
+                transform: rotateX(0deg);
+            }
+        }
+
+        /* ============ desktop view .end// ============ */
+    </style>
+
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        /* body {
+            min-height: 100vh;
+            display: flex;
+            background-size: cover;
+        } */
+
+        .container-from {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .form-section {
+            background-color: rgb(172, 172, 172);
+        }
+
+        .form-label {
+            font-size: 15px;
+            display: block;
+            padding-bottom: 5px;
+            color: rgb(0, 0, 0);
+            opacity: 1;
+            transform-origin: 0 0;
+            transition: all .3;
+        }
+
+        input[type="text"] {
+            background: whitesmoke;
+            border: .5px black solid;
+            width: 550px;
+            border-radius: 5px;
+            height: 40px;
+            font-size: 16px;
+            outline: none;
+            padding: 0px 10px;
+        }
+
+        select {
+            background: whitesmoke;
+            border: .5px black solid;
+            height: 30px;
+            font-size: 14px;
+            border-radius: 5px;
+            outline: none;
+            padding: 0px 20px;
+        }
+
+        .check-box {
+            margin-left: 15px;
+        }
+
+        input[type="password"] {
+            background: whitesmoke;
+            border: .5px black solid;
+            width: 550px;
+            font-size: 16px;
+            height: 40px;
+            border-radius: 5px;
+            outline: none;
+            padding: 0px 10px;
+        }
+
+        input[type="email"] {
+            background: whitesmoke;
+            border: .5px black solid;
+            width: 550px;
+            font-size: 16px;
+            height: 40px;
+            border-radius: 5px;
+            outline: none;
+            padding: 0px 10px;
+        }
+
+        input[type="submit"] {
+            position: relative;
+            width: 100px;
+            margin-left: 225px;
+            height: 30px;
+            text-transform: uppercase;
+            border: 2px solid black;
+            outline: none;
+            cursor: pointer;
+            background: #C1CAB7;
+        }
+
+        @media screen and (max-width: 584px) {
+            input[type="text"] {
+                width: 100%;
+            }
+
+            input[type="password"] {
+                width: 100%;
+            }
+
+            input[type="submit"] {
+                margin-left: 0px;
+            }
+        }
+    </style>
+
+    <div class="form-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="container-from">
+                        <form action="">
+
+                            <div>
+                                <label for="fullname" class="form-label">Full name<span
+                                        style="color: red ;">*</span></label>
+                                <div class="input-group">
+                                    <input type="text" name="full_name" id="full_name" placeholder="your name" required>
+                                </div>
+                            </div> <br>
+
+                            <div class="email">
+                                <label for="email" class="form-label">Email<span style="color: red ;">*</span></label>
+                                <div class="input-group">
+                                    <input type="email" name="email" id="email" placeholder="your email" required>
+                                </div>
+                            </div> <br>
+
+                            <div>
+                                <label for="contact" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <input type="text" name="mobile" id="mobile" placeholder="Your Phone Number"
+                                        required>
+                                </div>
+                            </div> <br>
+
+                            <div class="session">
+                                <label for="session" class="form-label">Session</label>
+                                <div class="input-group">
+                                    <select name="session" required>
+                                        <option value="6th-batch"> 2016-2017 </option>
+                                        <option value="7th-batch"> 2017-2018 </option>
+                                        <option value="8th-batch" selected> 2018-2019 </option>
+                                        <option value="9th-batch">2019-2020</option>
+                                        <option value="10th-batch">2020-2021</option>
+                                    </select>
+                                </div>
+
+                            </div><br>
+
+                            <div>
+                                <label for="club" class="form-label">CSE – Clubs </label>
+                                <div class="check-box">
+                                    <input type="checkbox" class="check-box">
+                                    <label for="programming" class="club-name"> Programming</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="application" class="club-name"> Software & Mobile
+                                        Application</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="development" class="club-name"> Web Design & Development</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="networking" class="club-name"> Networking</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="hacking" class="club-name"> Ethical Hacking</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="robotics" class="club-name"> Robotics</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="animation" class="club-name"> Animation</label><br>
+                                    <input type="checkbox" class="check-box">
+                                    <label for="sports" class="club-name"> Sports</label><br>
+
+                                </div>
+                            </div> <br>
+
+                            <div class="password">
+                                <label for="password" class="form-label">Password </label>
+                                <div class="input-group">
+                                    <input type="password" name="Password" id="password" placeholder="your password"
+                                        required>
+                                </div>
+                            </div> <br>
+
+                            <div class="password">
+                                <label for="password" class="form-label">Confirm password </label>
+                                <div class="input-group">
+                                    <input type="password" name="Password" id="password" placeholder="your password"
+                                        required>
+                                </div>
+                            </div> <br>
+
+                            <div class="submit">
+                                <input type="submit" name="submit" value="SUBMIT">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+{% block title %}
+Registration
+{% endblock title %}
+

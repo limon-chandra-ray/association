@@ -1,0 +1,41 @@
+{% extends 'account/user_profile.html' %}
+{% load static %}
+{% block account %}
+<div class="container">
+      <div class="py-5" style="width:100%;">
+            <h1 class="text-center">My Project</h1>
+      </div>
+      <div class="row justify-content-center">
+            {% if project %}
+                  {% for p in project %}
+                        <div class="col-md-8 my-2 pb-3">
+                              <div>
+                                    <h5>Project Name :  <span>{{p.name}}</span></h5>
+                                    <p>Github-Link : <span><a href="{{p.github}}">{{p.github}}</a></span></p>
+                                    <div class="owl-carousel owl-theme">
+                                          {% for img in projectImage %}
+                                                {% if img.project_name.name == p.name %}
+                                                      <div class="item" style="width:100%">
+                                                            <img style="width:100%;height:400px" src="{{img.image.url}}" alt="">
+                                                      </div>
+                                                {% endif %}
+                                          {% endfor %}
+                                          
+                                    </div>
+                              </div>
+                              
+                        </div>
+                  {% endfor %}
+            {% else %}
+            
+            <div>
+                  <h4 class="text-center">project Null</h4>
+            </div>
+            {% endif %}
+            
+            
+      </div>
+</div>
+
+
+{% endblock account %}

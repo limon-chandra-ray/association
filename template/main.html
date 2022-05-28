@@ -1,0 +1,351 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom-css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>{% block title %}{% endblock title %} | BSMRSTU CSE ASSOCIATION</title>
+
+    <style type="text/css">
+        /* ============ only desktop view ============ */
+        @media all and (min-width: 992px) {
+            .menubar1 .dropdown-menu-end {
+                right: 0;
+                left: auto;
+            }
+
+            .menubar1 .nav-item1 .dropdown-menu1 {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+                margin-top: 0;
+            }
+
+            .menubar1 .nav-item1:hover .nav-link {
+                color: #fff;
+            }
+
+            .menubar1 .dropdown-menu1.fade-down {
+                top: 80%;
+                transform: rotateX(-75deg);
+                transform-origin: 0% 0%;
+            }
+
+            .menubar1 .dropdown-menu1.fade-up {
+                top: 180%;
+            }
+
+            .menubar1 .nav-item1:hover .dropdown-menu1 {
+                transition: .3s;
+                opacity: 1;
+                visibility: visible;
+                top: 100%;
+                transform: rotateX(0deg);
+            }
+        }
+
+        /* ============ desktop view .end// ============ */
+    </style>
+</head>
+
+
+<body>
+    <style>
+        {% comment %} .owl-carousel {
+            transform: rotate(90deg);
+            width: 270px;
+            margin-top: 100px;
+        }
+
+        .item {
+            transform: rotate(-90deg);
+        } {% endcomment %}
+    </style>
+    {% comment %} fixed-top {% endcomment %}
+    <nav class="navbar navbar-expand-lg navbar-light menubar1 mobile-offcanvas"
+        style="background-image: linear-gradient( #30336b, #5e99ca);">
+        <div class="container-fluid">
+            <a class="navbar-brand logo-img" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navbar-animation" id="navbarNavDropdown">
+                <div class="menubar">
+                    <ul class="navbar-nav mx-auto ul-phone">
+                        <li class="nav-item nav-item1 li-phone">
+                            <a class="nav-link mx-2 underline-hover-effect active a-phone" aria-current="page"
+                                href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item nav-item1 dropdown li-phone">
+                            <a class="nav-link mx-2 dropdown-toggle underline-hover-effect a-phone" href="#events"
+                                id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Our Clubs
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu1 dropdown-animation fade-down"
+                                aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'programming' %}">Programming
+                                        Club</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'softwaremobileapp' %}">Software &
+                                        Mobile Application</a>
+                                </li>
+
+                                {% comment %} <li><a class="dropdown-item" href="{% url 'sports' %}">Sports</a>
+                                </li> {% endcomment %}
+
+                                <li><a class="dropdown-item" href="{% url 'webDesignDevelopment' %}">Web
+                                         & Networking</a>
+                                </li>
+
+                                <li><a class="dropdown-item" href="{% url 'ethicalHacking' %}">Hardware &
+                                        Hacking</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'cultural' %}">Cultural</a>
+                                </li>
+
+                                {% comment %} <li><a class="dropdown-item" href="{% url 'networking' %}">
+                                        Networking</a></li> {% endcomment %}
+                                {% comment %} <li><a class="dropdown-item" href="{% url 'robotics' %}">Robotics</a></li> {% endcomment %}
+                                <li><a class="dropdown-item" href="{% url 'animation' %}">Animation</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'math' %}">Math</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-item1 li-phone">
+                            <a class="nav-link mx-2 underline-hover-effect a-phone" href="{% url 'aboutUs' %}">About
+                                Us</a>
+                        </li>
+
+                        <li class="nav-item nav-item1 li-phone">
+                            <a class="nav-link mx-2 underline-hover-effect a-phone"
+                                href="{% url 'gallery' %}">Gallery</a>
+                        </li>
+
+                        <li class="nav-item nav-item1 li-phone">
+                            <a class="nav-link mx-2 underline-hover-effect a-phone"
+                                href="{% url 'contact' %}">Contact</a>
+                        </li>
+
+                        <li class="nav-item nav-item1 li-phone">
+                            <a class="nav-link mx-2 underline-hover-effect a-phone"
+                                href="{% url 'notice' %}">Notice</a>
+                                
+                        </li>
+                    </ul>
+                    
+                  </div>
+                </div>
+                {% if user.is_authenticated %}
+                 <div class="header-button">
+                    <a href="{% url 'myprofile' %}">
+                        <div class="btn" style="font-size: 20px;
+                        padding: 4px 35px 4px 0px;">{{user.user_name}}</div>
+                    </a>
+                    <a href="{% url 'logout' %}">
+                        <div class="btn btn-primary" style="font-size: 20px;
+                        padding: 12px;">LOG OUT</div>
+                    </a>
+                </div> 
+                
+                {% else %}
+                <div class=" dropdown">
+                    <a class="nav-link btn dropdown_menu_button" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Log-in
+                    </a>
+                    <div class="dropdown-menu dropdown-menu_ dropdown-menu-end">
+                          <div>
+                                <div class="my-4"></div>
+                                <form action="{% url 'login' %}" method="post">
+                                    {% csrf_token %}
+                                        <input class="form-control log_in_text_input " type="text" name="student_Id" placeholder="Student Id" >
+                                        <input class="form-control my-2 log_in_text_input" type="password" name="password" id="" placeholder="Password">
+                                    
+                                      
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn  log_in"> Log in</button>
+                                           
+                                      </div>
+                                    </form>
+                                      <div class="d-grid">
+                                            
+                                            <div class="text-center py-2" ><span>Are you not registration ?</span></div>
+                                            <a class="text-center registration_link" href="{% url 'registration' %}">REGISTRATION</a>
+                                      </div>
+                                
+                          </div>
+                          
+                </div>
+                {% endif %}
+                
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    {% block main %}
+    
+    {% endblock main %}
+    
+
+
+
+
+
+
+
+    <!-- ===============Footer============== -->
+    <footer class="bg-dark text-white pt-5 pb-4 foot">
+
+        <div class="container text-center text-md-left">
+
+            <div class="row text-center text-md-left">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 ">
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.bsmrstu.edu.bd/dev/dept/?id=cse">
+                            <img src="{% static 'images/imgcse1.jpg' %}" style="height: 100px; width: 100px;" class="rounded-circle dept-img d-blcok
+                                rounded-circle img-fluid mb-2">
+                        </a>
+                    </div>
+
+                    <div class="text-center mt-2">
+                        <h5 class="text-uppercase mb-4 font-weight-bold text-warning"><a
+                                style="color: #ea9c1a; text-decoration: none;"
+                                href="https://www.bsmrstu.edu.bd/dev/dept/?id=cse">CSE Office</a></h5>
+                        <p>
+                            <span class="main_office_span"><i
+                                    class="ml-3 fas fa-solid fa-phone mr-3 call-icon main_office_span_i"></i></span>
+                            : +88(721) 750742-3,
+                            751320
+                        </p>
+                        <p>
+                            <span class="main_office_span"><i
+                                    class="fas fa-envelope-open mt-1 mr-3"></i></span>bsmrstucse@gmail.com
+                        </p>
+
+                        <p>
+                            CSE Department, Bngabandhu Sheikh Mujibur Rahman Science & Technology University,
+                            Gopalganj-8100, Dhaka, Bangladesh
+                        </p>
+                    </div>
+                </div>
+                <div class="text-center col-md-4 col-lg-4 col-xl-3 mx-auto important-link  mt-5">
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.bsmrstu.edu.bd/dev/dept/?id=cse">
+                            <img src="" class="dept-img d-blcok rounded-circle img-fluid mb-2">
+                        </a>
+                    </div>
+                    <h5 class="text-uppercase mb-2 font-weight-bold text-warning">Important links</h5>
+                    <br>
+                    <div class="text-center">
+                        <a href="#" class="text-white" style="text-decoration: none;"> Home</a>
+                        <br>
+                        <a href="#" class="text-white" style="text-decoration: none;">About Bsmrstu</a>
+                        <br>
+                        <a href="#" class="text-white" style="text-decoration: none;">Publications</a>
+                        <br>
+                        <a href="#" class="text-white" style="text-decoration: none;">Gallery</a>
+                        <br>
+                        <a href="#" class="text-white" style="text-decoration: none;">Teachers (CSE)</a>
+                        <br>
+                        <a href="#" class="text-white" style="text-decoration: none;">Officers &
+                            Staff (CSE)</a>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mt-3 h-50">
+                    <div class="d-flex justify-content-center">
+                        <a href="https://www.bsmrstu.edu.bd">
+                            <img src="{% static 'images/bsmrstu_1.png' %}" style="height: 100px; width: 100px;"
+                                class="d-blcok rounded-circle img-fluid imeg">
+                        </a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <h5 class="varsity-tag text-uppercase mb-4 font-weight-bold text-warning">
+                            <a href="https://www.bsmrstu.edu.bd"
+                                style="color: #ea9c1a; text-decoration: none;">Bangabandhu
+                                Sheikh Mujibur Rahman Science & Technology</a>
+                        </h5>
+                        <p class="text-align-center varsity-description">
+                            Bangabandhu Sheikh Mujibur Rahman Science & technology (BSMRSTU) is the
+                            prestigious
+                            public Engineering University & center of excellence offers high quality
+                            education
+                            and research in the field of engineering and technology
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr class="mb-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-7 col-lg-8">
+                    <p> Copyright ©2022 All rights reserved by:
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-warning">BSMRSTU CSE</strong>
+                        </a>
+                    </p>
+
+                </div>
+
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-right">
+
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-google-plus"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i
+                                        class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+    <!-- ===============Footer END============== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/owl-carousel-customize.js' %}"></script>
+</body>
+
+</html>

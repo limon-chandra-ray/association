@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% block main %}
+<section>
+      <div class="container">
+            <div class="row">
+                  <div class="col-md-12">
+                        <div style="overflow:hidden;">
+                              <img src="../../static/images/programming-club-banner.jpg" style="height:250px;width:100%" alt="">
+                              <h1 style="
+                              opacity:1;
+                              top: 180px;
+                              left: 53%;
+                              position: absolute;
+                              color: white;
+                          ">MY PROFILE</h1>
+                        
+                        </div>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="col-md-3">
+                        <div class="list-group">
+                              <a href="{% url 'myprofile' %}" class="list-group-item list-group-item-action " aria-current="true">
+                                My Account
+                              </a>
+                              <a href="{% url 'myproject' %}" class="list-group-item list-group-item-action">Project</a>
+                              <a href="{% url 'myClub' %}" class="list-group-item list-group-item-action">Active Club</a>
+                              <a href="{% url 'addNewProject' %}" class="list-group-item list-group-item-action ">Add New Project</a>
+                              <a href="{% url 'accountSettings' %}" class="list-group-item list-group-item-action">Settings</a>
+                              
+                            </div>
+                  </div>
+                  <div class="col-md-9">
+                        {% block account %}{% endblock account %}
+                  </div>
+            </div>
+      </div>
+</section>
+
+{% endblock main %}

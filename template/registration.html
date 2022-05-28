@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% block main %}
+<section class="mb-4 " style="background-color: gainsboro;" >
+      <div class="row container" style="background-color: #b6d4d5;">
+            <div class="container">
+                  <div class="row justify-content-center">
+                        <div class="col-md-6 my-4 py-4" style="background-color:rgb(195, 194, 194);color:black">
+                              <h1 class="text-center">REGISTRATION</h1>
+                        </div>
+                  </div>
+                  
+            </div>
+            <div class="container">
+                  <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row justify-content-center">
+                              <div class="col-md-6">
+                                    <div class="row">
+                                          <div class="col-md-12">
+                                                <label for="studentId" class="form-label">Student Id</label>
+                                                <input type="text" class="form-control" name="studentId" placeholder="student id" id="">
+                                          </div>
+                                          <div class="col-md-12">
+                                                <label for="FullName" class="form-label">Full name</label>
+                                                <input type="text" class="form-control" name="name" placeholder="full name" id="">
+                                          </div>
+                                          <div class="col-md-12">
+                                                <label for="UserName" class="form-label">User name</label>
+                                                <input type="text" class="form-control" name="user_name" placeholder="user name" id="">
+                                          </div>
+                                          <div class="col-md-12">
+                                                <label for="EmailAddress" class="form-label">Email Address</label>
+                                                <input type="email" class="form-control" name="email" placeholder="email address" id="">
+                                          </div>
+                                          <!-- <div class="col-md-12">
+                                                <label for="SocialMedia" class="form-label">LinkedIn Id</label>
+                                                <input type="url" class="form-control" name="socialmedia" placeholder="social media" id="">
+                                          </div> -->
+                                          <div class="col-md-12">
+                                                <label for="CSEBatch" class="form-label">CSE Batch Number</label>
+                                                <input type="number" class="form-control" name="batch" placeholder="cse batch number" id="">
+                                          </div>
+                                          <div class="col-md-12">
+                                                <label for="CSEBatch" class="form-label">Choose your Goal</label>
+                                                <div class="row">
+                                                      {% for club in clubs %}
+                                                            <div class="col-md-4">
+                                                                  <div class="form-check">
+                                                                        <input class="form-check-input" name="recommendationClub" type="checkbox" value="{{club.club_name}}" id="flexCheckDefault">
+                                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                                        {{club.club_name}}
+                                                                        </label>
+                                                                  </div>
+                                                            </div>
+                                                      {% endfor %}
+                                                     
+                                                      
+                                                </div>      
+                                          </div>
+                                          
+                                          <div class="col-md-12">
+                                                <label for="Password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" name="password1" placeholder="password" id="">
+                                          </div>
+                                          <div class="col-md-12">
+                                                <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                                                <input type="password" class="form-control" name="password2" placeholder="confirm password" id="">
+                                          </div>
+      
+                                          <div class="col-md-12 my-4 d-flex justify-content-center ">
+                                               
+                                                <button class="btn btn-primary w-25" type="submit">Submit</button>
+                                          </div>
+                                    </div>
+                              </div>
+                              
+                        </div>
+                  </form>
+            </div>
+      </div>
+      
+</section>
+{% endblock main %}
+{% block title %}
+Registration
+{% endblock title %}

@@ -1,0 +1,258 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block main %}
+    <style type="text/css">
+        /* ============ only desktop view ============ */
+        @media all and (min-width: 992px) {
+            .menubar1 .dropdown-menu-end {
+                right: 0;
+                left: auto;
+            }
+
+            .menubar1 .nav-item1 .dropdown-menu1 {
+                display: block;
+                opacity: 0;
+                visibility: hidden;
+                transition: .3s;
+                margin-top: 0;
+            }
+
+            .menubar1 .nav-item1:hover .nav-link {
+                color: #fff;
+            }
+
+            .menubar1 .dropdown-menu1.fade-down {
+                top: 80%;
+                transform: rotateX(-75deg);
+                transform-origin: 0% 0%;
+            }
+
+            .menubar1 .dropdown-menu1.fade-up {
+                top: 180%;
+            }
+
+            .menubar1 .nav-item1:hover .dropdown-menu1 {
+                transition: .3s;
+                opacity: 1;
+                visibility: visible;
+                top: 100%;
+                transform: rotateX(0deg);
+            }
+        }
+
+        /* ============ desktop view .end// ============ */
+    </style>
+    <!-- ==========Banner Section============ -->
+    <!-- <div class="main-banner bg-dark" id="top">
+        <video autoplay="" muted="" loop="" id="bg-video" style="width: 100%; height: 40rem;">
+            <source src="../../../static/images/ethical-hacking.mp4" type="video/mp4">
+        </video>
+    </div> -->
+    <!-- ==========Banner Section End============ -->
+
+    <H1 class="text-center p-5"
+        style="background-image: url(../../../static/images/water-dropsjpg.jpg); background-repeat: no-repeat; background-size: cover; margin-top: 2px; color: #0d00f5; font-size: 60px; margin-bottom: 2px;">
+        Ethical Hacking Club
+    </H1>
+
+
+    <!-- ==============Activities============ -->
+    <div class="activities-section" style="background-color: #efeff5;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <div class="section-heading">
+                        <h3> Activities </h3>
+                        <img style="padding-bottom: 5px;" src="../../../static/images/line-dec.png" alt="waves">
+                        <p class="py-2"> 01100100 01101001 01100011 01101111 01110110 01100101 01110010 00100000
+                            01101101
+                            01101111
+                            01110010 01100101 </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        <li class="feature-item" style="list-style: none;">
+                            <div class="left-icon">
+                                <img src="../../../static/images/ethical-first-icon.png" alt="First One" style="float: left;
+                                margin-right: 30px;">
+                            </div>
+                            <div class="right-content">
+                                <h4>Meetings </h4>
+                                <p> Our club's have a committee. Here we arrange a weekly meeting about a topic.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="features-items" style="list-style: none;">
+                        <li class="feature-item">
+                            <div class="left-icon">
+                                <img src="../../../static/images/ethical-first-icon.png" alt="fourth muscle" style="float: left;
+                                margin-right: 30px;">
+                            </div>
+                            <div class="right-content">
+                                <h4> Readings </h4>
+                                <p> We are currently reading this book: <a rel="nofollow"
+                                        href="https://repo.zenk-security.com/Magazine%20E-book/Hacking-%20The%20Art%20of%20Exploitation%20(2nd%20ed.%202008)%20-%20Erickson.pdf"
+                                        target="_parent">Hacking: The Art of Exploitation (2nd Ed.) - Jon Erickson</a>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ==============Activities End============ -->
+
+    <!---Members-->
+<div class="container-fluid" style="background-color:rgb(58, 58, 58);">
+    <div class="row text-center">
+        <h1 class="mx-auto py-2 my-2" style="font-size:50px;color: white">MEMBERS</h1>
+    </div>
+    <div class="container row justify-content-center ">
+        {% if club_member %}
+            {% for aclub in club_member %}
+                <div class="col-md-4 col-lg-4 small-d" style="text-align: -webkit-center;">
+                        <a href="{% url 'memberDetails' aclub.member.id aclub.club.club_name aclub.member.student_id%}" class="card_hover">
+                            <div class="card" style="width: 20rem;overflow:hidden;align-items: center;">
+                                    <div style="overflow:hidden;">
+                                            {% if background_image %}
+                                                {% for image in background_image %}
+                                                    {% if image.member.id == aclub.member.id%}
+                                                        <img style="height:200px" src="{{image.image.url}}"/>
+                                                    
+                                                    {% endif %}
+                                                {% endfor %}  
+                                            {% else %}
+                                                <img style="height:200px" src="{% static 'images/programming-club-banner.jpg' %}"/>
+                                            {% endif %}
+                                
+                                        <div style="    width: 110px;
+                                            height: 110px;
+                                            top: 16%;
+                                            overflow: hidden;
+                                            position: absolute;
+                                            left: 33%;
+                                            border-radius: 66px;">
+                                            {% for image in profile_image %}
+                                                {% if image.member.id == aclub.member.id %}
+                                                    <img class="profile_image" src="{{image.image.url}}" style="object-fit: cover;width: 100%;height:100%" alt="">
+                                                
+                                                {% endif %}
+
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center">{{aclub.member.user_name}}</h5>
+                                        <p style="margin-bottom: 5px">Student ID:  {{aclub.member.student_id}}</p>
+                                        <p style="margin-bottom: 0px">Batch : {{aclub.member.batch_no}}</p>
+                                    </div>
+                            </div>
+                        </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1 style="text-align:center;color:white">No MEMBERS</h1>
+        {% endif %}
+    </div>
+</div>
+<!---Members End-->
+
+
+    <!-- ===========Dont Think=========== -->
+    <style>
+        #call-to-action {
+            padding: 100px 0px;
+            background-image: url(../../../static/images/cybersecurity/1.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+        }
+    </style>
+    <section class="section" id="call-to-action" style="padding: 100px 0px;
+    background-image: url(https://ethicalhacking.club/assets/images/cybersecurity/1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <h1 class="text-white">Don’t think, begin today!</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===========Dont Think End=========== -->
+
+
+
+    <!-- ========Club Member====== -->
+    <div class="container my-5">
+        <div class="row">
+            <h3 style="font-size: 40px;color: #000000; text-align: center" class="cms-heading-inner">
+                <span>Club Member</span>
+            </h3>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div style="display: flex;flex-wrap: nowrap;width: 100%; align-items: center;">
+                    <img style="
+                        align-items: center;
+                        height: auto;
+                        max-width: 100%;
+                        vertical-align: middle;"
+                        src="https://www.sub.ac.bd/wp-content/themes/wp-amilia/assets/images/ribbon1.png">
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="service-section py-5" style="background-color: #cfd7ff;">
+                <div class="container">
+                    <div class="row text-center" style="margin-left: 40px;">
+                        <div class="col-md-4 py-5">
+                            <div class="p-5 bg-light" style="width: 23rem; border-radius: 10px;">
+                                <h3 class="py-2">Vice President</h3>
+                                <img src="../../../static/images/man-icon.png" alt=""
+                                    style="height: 150px; width: 150px; border-radius: 50%">
+                                <div class="">
+                                    <p>Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 py-4">
+                            <div class="p-5 bg-light" style="width: 22rem; border-radius: 10px;">
+                                <h3 class="py-2">President</h3>
+                                <img src="../../../static/images/man-icon.png" alt=""
+                                    style="height: 150px; width: 150px; border-radius: 50%">
+                                <div class="">
+                                    <p>Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 py-5">
+                            <div class="p-5 bg-light" style="width: 22rem; border-radius: 10px;">
+                                <h3 class="py-2">Vice President</h3>
+                                <img src="../../../static/images/man-icon.png" alt=""
+                                    style="height: 150px; width: 150px; border-radius: 50%">
+                                <div class="">
+                                    <p>Name</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========Club Member End====== -->
+
+{% endblock main %}
+{% block title %}
+Hardware and Hacking
+{% endblock title %}

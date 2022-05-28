@@ -1,0 +1,54 @@
+{% extends 'account/user_profile.html' %}
+{% block account %}
+<div class="container">
+      <div class="py-5" style="width:100%;">
+            <h1 class="text-center">Add NEw Project</h1>
+      </div>
+      <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                  <div class="col-md-8">
+                        <label for="project" class="form-label">Project Name</label>
+                        <input type="text" class="form-control" name="projectName" placeholder="project name" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="selectedClub" class="form-label">Club Name</label>
+                        <select class="form-select form-select-md mb-3" name="selectedClub">
+                              <option selected>select club</option>
+                              {% for club in clubs %}
+                                    <option value="{{club.club_name}}">{{club.club_name}}</option>
+                              {% endfor %}
+                            </select>
+                  </div>
+                  <div class="col-md-8">
+                        <label for="githublink" class="form-label">Github Link</label>
+                        <input type="url" class="form-control" name="githublink" placeholder="github link" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="domainName" class="form-label">Project Domain Name <span>(optional)</span></label>
+                        <input type="text" class="form-control" name="domainName" placeholder="project domain name" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="image1" class="form-label">Image 1</label>
+                        <input type="file" class="form-control" name="image1" placeholder="image 1" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="image2" class="form-label">Image 2</label>
+                        <input type="file" class="form-control" name="image2" placeholder="image 1" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="image3" class="form-label">Image 3</label>
+                        <input type="file" class="form-control" name="image3" placeholder="image 1" id="">
+                  </div>
+                  <div class="col-md-8">
+                        <label for="image4" class="form-label">Image 4</label>
+                        <input type="file" class="form-control" name="image4" placeholder="image 1" id="">
+                  </div>
+                  <div class="col-md-8 my-2">
+                        <button type="submit" class="form-control" style="background: #2ba12b;color: white;font-size: 25px;">Add Project</button>
+                  </div>
+            </div>
+      </form>
+</div>
+
+{% endblock account %}
